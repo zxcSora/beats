@@ -56827,6 +56827,203 @@ type: date
 --
 
 [float]
+=== replication
+
+One row per replication, showing database replication statistics. Collected by querying pg_stat_replication.
+
+
+
+*`postgresql.replication.write_lag`*::
++
+--
+Elapsed time during committed WALs from primary to the replica.
+
+
+type: long
+
+--
+
+*`postgresql.replication.state`*::
++
+--
+Current WAL sender state.
+
+
+type: keyword
+
+--
+
+*`postgresql.replication.sync_priority`*::
++
+--
+Priority of this standby server for being chosen as the synchronous standby.
+
+
+type: long
+
+--
+
+*`postgresql.replication.backend_start`*::
++
+--
+Time when this process was started, i.e., when the client connected to this WAL sender.
+
+
+type: long
+
+--
+
+*`postgresql.replication.backend_xmin`*::
++
+--
+This standby's xmin horizon reported by hot_standby_feedback.
+
+
+type: long
+
+--
+
+*`postgresql.replication.replay_lag`*::
++
+--
+Elapsed time during committed WALs from primary to the replica. Fully committed to replica node.
+
+
+type: long
+
+--
+
+*`postgresql.replication.flush_lag`*::
++
+--
+The elapsed time during committed WALs from primary to the replica. WALs have already been flushed but have not yet been applied.
+
+
+type: long
+
+--
+
+*`postgresql.replication.pid`*::
++
+--
+Process ID of a WAL sender process.
+
+
+type: long
+
+--
+
+*`postgresql.replication.client.address`*::
++
+--
+IP address of the client connected to this WAL sender. If this field is null, it indicates that the client is connected via a Unix socket on the server machine.
+
+
+type: long
+
+--
+
+*`postgresql.replication.client.port`*::
++
+--
+TCP port number that the client is using for communication with this WAL sender, or -1 if a Unix socket is used.
+
+
+type: long
+
+--
+
+*`postgresql.replication.client.hostname`*::
++
+--
+Host name of the connected client, as reported by a reverse DNS lookup of client_addr. This field will only be non-null for IP connections, and only when log_hostname is enabled.
+
+
+type: long
+
+--
+
+*`postgresql.replication.replay_lsn`*::
++
+--
+Last transaction log position replayed into the database on this standby server.
+
+
+type: long
+
+--
+
+*`postgresql.replication.user.name`*::
++
+--
+Name of the user logged into this WAL sender process.
+
+
+type: keyword
+
+--
+
+*`postgresql.replication.user.id`*::
++
+--
+OID of the user logged into this WAL sender process.
+
+
+type: long
+
+--
+
+*`postgresql.replication.sync_state`*::
++
+--
+Synchronous state of this standby server.
+
+
+type: keyword
+
+--
+
+*`postgresql.replication.flush_lsn`*::
++
+--
+Last transaction log position flushed to disk by this standby server.
+
+
+type: long
+
+--
+
+*`postgresql.replication.application_name`*::
++
+--
+Name of the application that is connected to this WAL sender.
+
+
+type: keyword
+
+--
+
+*`postgresql.replication.write_lsn`*::
++
+--
+Last transaction log position written to disk by this standby server.
+
+
+type: long
+
+--
+
+*`postgresql.replication.sent_lsn`*::
++
+--
+Last transaction log position sent on this connection.
+
+
+type: long
+
+--
+
+[float]
 === statement
 
 One document per query per user per database, showing information related invocation of that query, such as cpu usage and total time. Collected by querying pg_stat_statements.
